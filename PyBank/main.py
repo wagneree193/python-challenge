@@ -9,19 +9,20 @@ with open(csvpath) as csvfile:
     csv_header=next(csvreader)
  #create lists to store data    
     months = []
-    profits = []   
+    profits = []
+     
     for column in csvreader:
 
         months.append(column[0])
         profits.append(column[1])
 
         TotalMonths = len(list(months))
-        Total = int(sum(profits))
+        
 
         
 
 print(f"Total Months: {TotalMonths}",
-       f"Total: {Total}")
+       profits[1])
     
     
 
