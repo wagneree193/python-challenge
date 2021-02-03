@@ -3,23 +3,17 @@ import csv
 
 csvpath = os.path.join("Resources\PyBank_budget_data.csv")
 
-Months = []
-Profits = []
-TotalMonths = []
-Total = [] 
-AverageChange = []
-GreatestIncrease = []
-GreatestDecrease = []
+def budget_summary(budget_data):
 
-with open(csvpath) as csvfile:
-    budget_data = csv.reader(csvpath, delimiter=",")
-    for column in budget_data:
-        Months.append(column[0])
-        
+    Months = str(budget_data[0])
+    Profit = int(budget_data[1])
 
-        TotalMonths= len(list(Months))
+    TotalMonths = len(list(months))
 
-print(f"Total Months: {TotalMonths}")
+    Total = sum(int(profits))
+
+print(f"Total Months: {TotalMonths}",
+       f"Total: {Total}")
     
     
 
