@@ -3,14 +3,22 @@ import csv
 
 csvpath = os.path.join("Resources\PyBank_budget_data.csv")
 
-def budget_summary(budget_data):
 
-    Months = str(budget_data[0])
-    Profit = int(budget_data[1])
+with open(csvpath) as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=",")
+    csv_header=next(csvreader)
+ #create lists to store data    
+    months = []
+    profits = []   
+    for column in csvreader:
 
-    TotalMonths = len(list(months))
+        months.append(column[0])
+        profits.append(column[1])
 
-    Total = sum(int(profits))
+        TotalMonths = len(list(months))
+        Total = int(sum(profits))
+
+        
 
 print(f"Total Months: {TotalMonths}",
        f"Total: {Total}")
