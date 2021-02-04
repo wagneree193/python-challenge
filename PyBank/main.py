@@ -17,12 +17,12 @@ with open(csvpath) as csvfile:
         profits.append(column[1])
 
         TotalMonths = len(list(months))
-        
+        start = profits[0]
+        profits = [profits]
+        Total = sum(profits)
 
-        
+    print(f"Total Months: {TotalMonths}")
 
-print(f"Total Months: {TotalMonths}",
-       profits[1])
     
     
 
