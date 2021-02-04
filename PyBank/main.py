@@ -21,10 +21,14 @@ with open(csvpath) as csvfile:
         start = profits[0]
         Total = sum(profits)
         Average = (Total/len(list(profits)))
+        Increase = max(profits)
+        Decrease = min(profits)
 
     print(f"Total Months: {Months}")
     print(f"Total: {Total}")  
-    print(f"Average Change: {Average}")    
+    print(f"Average Change: {Average}")
+    print(f"Greatest Increase in Profits: {Increase}")
+    print(f"Greatest Decrease in Profits: {Decrease}")    
 
     
     
