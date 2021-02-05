@@ -11,51 +11,56 @@ with open(csvpath) as csvfile:
     months = []
     profits = [] 
     monthly_change_list = []
+    #create variables for the calculations
+    #make counter to skip the first row of data in the profits/losses
     counter = 1
-    greateast_profit = 0
-    greateast_loss = 0
+    greatest_profit = 0
+    greatest_loss = 0
     prev_month_pl=0
     curr_month_pl=0
     month_profit=""
     month_loss=""
     Average = 0 
-    for column in csvreader:
+    for row in csvreader:
         
-        
-        months.append(column[0])
+        #designate data for months and profits lists
+        months.append(row[0])
         #convert data from string to integer to sum
-        profits.append(int(column[1]))
-        #calculate the change over time in profits and add to list
-        #next_profit=int(row[1])
-        #change = (next_profit- profits[1])
-        
-        curr_month_pl=int(column[1])
+        profits.append(int(row[1]))
+
+        #counter>1 will skip calculation on first row
+        curr_month_pl=int(row[1])
         if counter > 1:
             month_change = curr_month_pl - prev_month_pl
+            #add calculations to a list
             monthly_change_list.append(month_change)
-            if greateast_profit < month_change:
-                greateast_profit= month_change
-                month_profit= column[0]
-            if greateast_loss > month_change:
-                greateast_loss = month_change
-                month_loss=column[0]
+            #change the month_change variable every time a higher value is encountered for greatest profit;lower for greatest loss
+            #match the corresponding month
+            if greatest_profit < month_change:
+                greatest_profit= month_change
+                month_profit= row[0]
+            if greatest_loss > month_change:
+                greatest_loss = month_change
+                month_loss=row[0]
         
 
 
         Months = len(list(months))
-        start = profits[0]
+        #start = profits[0]
         Total = sum(profits)
-        #Average = sum(monthly_change_list)/(len(monthly_change_list))
-        #Increase = max(profits)
-        #Decrease = min(profits)
-        prev_month_pl = int(column[1])
+        prev_month_pl = int(row[1])
         counter=counter+1
+
+    #put average outside of the loop bc monthly change list is not final until the loop completes
+    #round to two decimal places    
     Average = round(sum(monthly_change_list)/(len(monthly_change_list)),2)  
+
+    #print outputs from calculations
     print(f"Total Months: {Months}")
     print(f"Total: {Total}")  
     print(f"Average Change: {Average}")
-    print(f"Greatest Increase in Profits: {greateast_profit}, {month_profit}")
-    print(f"Greatest Decrease in Profits: {greateast_loss}, {month_loss}")    
+    print(f"Greatest Increase in Profits: {month_profit}, {greatest_profit}")
+    print(f"Greatest Decrease in Profits: {month_loss}, {greatest_loss}")    
 
     
     
