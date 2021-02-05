@@ -24,11 +24,14 @@ with open(csvpath) as csvfile:
         VoterID.append(row[0])
         County.append(row[1])
         Candidate_list.append(row[2])
-        #Candidate_dict = zip(VoterID, Candidate_list)
-        Candidate_set = set(Candidate_list)
-        for x in Candidate_set:
-            if x not in Candidate_set:
-                Candidate_unique.append(x)
+        name = row[2]
+    
+        Candidate_dict = zip(VoterID, Candidate_list)
+        #Candidate_set = set(Candidate_list)
+        #for the values in candidate set, if the value is not in the candidate unique list already, append to it
+        for name in Candidate_dict:
+            if name not in Candidate_unique:
+                Candidate_unique.append(name)
 
             
 
