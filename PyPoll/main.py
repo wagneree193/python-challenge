@@ -10,25 +10,36 @@ with open(csvpath) as csvfile:
     VoterID = []
     County = []
     Candidate_list = []
+    Candidate_unique = []
     Candidate_dict = {}
-    Count=0
+    Counter = 0
     Vote_Count=0
     Percent_Votes = 0
     Total_Votes = 0
     Winner = ""
 
     for row in csvreader:
-        Count = Count + 1
+        
         #Append data to lists
         VoterID.append(row[0])
         County.append(row[1])
         Candidate_list.append(row[2])
-        #Create a set of unique words
-        Candidate_set = set()
-        Candidate_dict= dict()
-        Candidate_dict = ("VoterID" : "Candidate_list")
-        
+        #Candidate_dict = zip(VoterID, Candidate_list)
+        Candidate_set = set(Candidate_list)
+        for x in Candidate_set:
+            if x not in Candidate_set:
+                Candidate_unique.append(x)
 
+            
+
+
+
+                                                    #Create a set of unique words
+                                                    #Candidate_set = set()
+                                                    #Candidate_dict= dict()
+                                                    #Candidate_dict = ("VoterID" : "Candidate_list")
+        
+        Counter = Counter + 1
         #find unique candidate names in the dicionary
         #create vote count value in dictionary for each unique name
         #for value in Candidate_dict.values():
@@ -50,4 +61,5 @@ with open(csvpath) as csvfile:
     TotalVotes= Vote_Count
 
 print(f"Total Votes: {TotalVotes}")
-print(f"Candidate: {Candidate_set}")
+print(Candidate_unique)
+#print(f"Candidate: {Candidate_unique}")
