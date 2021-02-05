@@ -42,11 +42,10 @@ with open(csvpath) as csvfile:
             if greatest_loss > month_change:
                 greatest_loss = month_change
                 month_loss=row[0]
-        
+    
 
 
         Months = len(list(months))
-        #start = profits[0]
         Total = sum(profits)
         prev_month_pl = int(row[1])
         counter=counter+1
@@ -56,6 +55,8 @@ with open(csvpath) as csvfile:
     Average = round(sum(monthly_change_list)/(len(monthly_change_list)),2)  
 
     #print outputs from calculations
+    print("Financial Analysis")
+    print("-------------------------")
     print(f"Total Months: {Months}")
     print(f"Total: {Total}")  
     print(f"Average Change: {Average}")
