@@ -31,7 +31,7 @@ with open(csvpath) as csvfile:
     
         Candidate_dict[name] = Candidate_dict[name]+1 
         for name, value in Candidate_dict.items():
-            if Candidate_dict[name] > Total_Votes:
+            if Candidate_dict[name] > Vote_Count:
 
                 Vote_Count = Candidate_dict[name]
                 Winner = name
@@ -56,22 +56,30 @@ with open(csvpath) as csvfile:
             
             #Vote_Count[key] = [value] + [round(100*(value/Total_Votes),2)]
     Total_Votes = len(list(VoterID))
-  
     
-    Khan_pct = round((int(Candidate_list.count("Khan"))/Total_Votes)*100,2)
-    Li_pct = round((int(Candidate_list.count("Li"))/Total_Votes)*100,2)
-    OTooley_pct = round((int(Candidate_list.count("O'Tooley"))/Total_Votes)*100,2)
-    Correy_pct = round((int(Candidate_list.count("Correy"))/Total_Votes)*100,2)
+    Khan_tot = int(Candidate_list.count("Khan"))
+    Li_tot = int(Candidate_list.count("Li"))
+    OT_tot = int(Candidate_list.count("O'Tooley"))
+    Correy_tot = int(Candidate_list.count("Correy"))
+
+    Khan_pct = round((Khan_tot/Total_Votes)*100,2)
+    Li_pct = round((Li_tot/Total_Votes)*100,2)
+    OTooley_pct = round((OT_tot/Total_Votes)*100,2)
+    Correy_pct = round((Correy_tot/Total_Votes)*100,2)
 
     #Percent_Votes= [round(100*(Candidate_dict[name]/Total_Votes),2)]   
 
 
-
+print("Election Results")
+print("------------------------")
 print(f"Total Votes: {Total_Votes}")
-print(Winner)
-print(Khan_pct, (K_pop))
-print(Li_pct)
-print(OTooley_pct)
-print(Correy_pct)
+print("------------------------")
+
+print(f"Khan : {Khan_pct, [Khan_tot]}")
+print(f"Li : {Li_pct, [Li_tot]}")
+print(f"O'Tooley : {OTooley_pct, [OT_tot]}")
+print(f"Correy: {Correy_pct, [Correy_tot]}")
+print("-------------------------")
+print(f"Winner: {Winner}")
 
 #print(f"Candidate: {Candidate_unique}")
