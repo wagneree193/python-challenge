@@ -30,9 +30,14 @@ with open(csvpath) as csvfile:
 
     
         Candidate_dict[name] = Candidate_dict[name]+1 
-        #Candidate_set = set(Candidate_list)
-        #for the values in candidate set, if the value is not in the candidate unique list already, append to it
+        for name, value in Candidate_dict.items():
+            if Candidate_dict[name] > Total_Votes:
+
+                Vote_Count = Candidate_dict[name]
+                Winner = name
+            Percent_Votes =  [round(100*(Candidate_dict[name]/Vote_Count),2)]
         
+       
             
 
             
@@ -42,13 +47,7 @@ with open(csvpath) as csvfile:
                                                    
         
         Counter = Counter + 1
-        #find unique candidate names in the dicionary
-        #create vote count value in dictionary for each unique name
-        #for value in Candidate_dict.values():
-            #if not value in Vote_Count:
-                #Vote_Count[value] = 1
-            #else:
-                #Vote_Count[value] = Vote_Count[value] + 1
+        
 
        # for key, value in Vote_Count.items():
            # if Vote_Count[key]>Total_Votes:
@@ -56,12 +55,14 @@ with open(csvpath) as csvfile:
                 #Winner = key
             
             #Vote_Count[key] = [value] + [round(100*(value/Total_Votes),2)]
-    Vote_Count = len(list(VoterID))
-       
+    Total_Votes = len(list(VoterID))
+    #Percent_Votes= [round(100*(Candidate_dict[name]/Total_Votes),2)]   
 
 
-    TotalVotes= Vote_Count
 
-print(f"Total Votes: {TotalVotes}")
+print(f"Total Votes: {Total_Votes}")
 print(Candidate_dict)
+print(Winner)
+print(Percent_Votes)
+
 #print(f"Candidate: {Candidate_unique}")
