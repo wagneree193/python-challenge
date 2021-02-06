@@ -35,7 +35,7 @@ with open(csvpath) as csvfile:
 
                 Vote_Count = Candidate_dict[name]
                 Winner = name
-            Percent_Votes =  [round(100*(Candidate_dict[name]/Vote_Count),2)]
+            
         
        
             
@@ -56,13 +56,22 @@ with open(csvpath) as csvfile:
             
             #Vote_Count[key] = [value] + [round(100*(value/Total_Votes),2)]
     Total_Votes = len(list(VoterID))
+  
+    
+    Khan_pct = round((int(Candidate_list.count("Khan"))/Total_Votes)*100,2)
+    Li_pct = round((int(Candidate_list.count("Li"))/Total_Votes)*100,2)
+    OTooley_pct = round((int(Candidate_list.count("O'Tooley"))/Total_Votes)*100,2)
+    Correy_pct = round((int(Candidate_list.count("Correy"))/Total_Votes)*100,2)
+
     #Percent_Votes= [round(100*(Candidate_dict[name]/Total_Votes),2)]   
 
 
 
 print(f"Total Votes: {Total_Votes}")
-print(Candidate_dict)
 print(Winner)
-print(Percent_Votes)
+print(Khan_pct, (K_pop))
+print(Li_pct)
+print(OTooley_pct)
+print(Correy_pct)
 
 #print(f"Candidate: {Candidate_unique}")
