@@ -11,7 +11,7 @@ with open(csvpath) as csvfile:
     County = []
     Candidate_list = []
     Candidate_unique = []
-    Candidate_dict = {}
+    Candidate_dict = {'Khan' : 0 , 'Li' : 0, "O'Tooley" : 0, "Correy" : 0}
     Counter = 0
     Vote_Count=0
     Percent_Votes = 0
@@ -25,22 +25,21 @@ with open(csvpath) as csvfile:
         County.append(row[1])
         Candidate_list.append(row[2])
         name = row[2]
+        #candidate name is key and value is how many votes they got
+
+
     
-        Candidate_dict = zip(VoterID, Candidate_list)
+        Candidate_dict[name] = Candidate_dict[name]+1 
         #Candidate_set = set(Candidate_list)
         #for the values in candidate set, if the value is not in the candidate unique list already, append to it
-        for name in Candidate_dict:
-            if name not in Candidate_unique:
-                Candidate_unique.append(name)
+        
+            
 
             
 
 
 
-                                                    #Create a set of unique words
-                                                    #Candidate_set = set()
-                                                    #Candidate_dict= dict()
-                                                    #Candidate_dict = ("VoterID" : "Candidate_list")
+                                                   
         
         Counter = Counter + 1
         #find unique candidate names in the dicionary
@@ -64,5 +63,5 @@ with open(csvpath) as csvfile:
     TotalVotes= Vote_Count
 
 print(f"Total Votes: {TotalVotes}")
-print(Candidate_unique)
+print(Candidate_dict)
 #print(f"Candidate: {Candidate_unique}")
