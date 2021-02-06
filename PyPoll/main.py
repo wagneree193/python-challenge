@@ -35,9 +35,12 @@ with open(csvpath) as csvfile:
 
                 Vote_Count = Candidate_dict[name]
                 Winner = name
-            
+            #if Counter > 1:
+            #commenting out bc can't figre out how to get around the div by 0 error
+
+                #Pct[name] = [Vote_Count] + [round(100*(Vote_Count/Total_Votes),2)]
         
-       
+    
             
 
             
@@ -49,12 +52,8 @@ with open(csvpath) as csvfile:
         Counter = Counter + 1
         
 
-       # for key, value in Vote_Count.items():
-           # if Vote_Count[key]>Total_Votes:
-                #Total_Votes = Vote_Count[key]
-                #Winner = key
             
-            #Vote_Count[key] = [value] + [round(100*(value/Total_Votes),2)]
+            
     Total_Votes = len(list(VoterID))
     
     Khan_tot = int(Candidate_list.count("Khan"))
@@ -67,14 +66,14 @@ with open(csvpath) as csvfile:
     OTooley_pct = round((OT_tot/Total_Votes)*100,2)
     Correy_pct = round((Correy_tot/Total_Votes)*100,2)
 
-    #Percent_Votes= [round(100*(Candidate_dict[name]/Total_Votes),2)]   
+    #Percent_Votes= [round(100*(votes per name/Total_Votes),2)]   
 
 
 print("Election Results")
 print("------------------------")
 print(f"Total Votes: {Total_Votes}")
 print("------------------------")
-
+#print(Pct)
 print(f"Khan : {Khan_pct, [Khan_tot]}")
 print(f"Li : {Li_pct, [Li_tot]}")
 print(f"O'Tooley : {OTooley_pct, [OT_tot]}")
@@ -82,4 +81,3 @@ print(f"Correy: {Correy_pct, [Correy_tot]}")
 print("-------------------------")
 print(f"Winner: {Winner}")
 
-#print(f"Candidate: {Candidate_unique}")
