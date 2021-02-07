@@ -46,7 +46,7 @@ with open(csvpath) as csvfile:
 
 
         Months = len(list(months))
-        Total = sum(profits)
+        Total = round(sum(profits),2)
         prev_month_pl = int(row[1])
         counter=counter+1
 
@@ -54,24 +54,26 @@ with open(csvpath) as csvfile:
     #round to two decimal places    
     Average = round(sum(monthly_change_list)/(len(monthly_change_list)),2)  
 
-    #print outputs from calculations and write to .txt
-    open("main.txt", "x")
-    f.write(print("Financial Analysis")
-            print("-------------------------")
-            print(f"Total Months: {Months}")
-            print(f"Total: {Total}")  
-            print(f"Average Change: {Average}")
-            print(f"Greatest Increase in Profits: {month_profit}, {greatest_profit}")
-            print(f"Greatest Decrease in Profits: {month_loss}, {greatest_loss}"))  
-    f.close()
+    #create text file for the output
+    budget_results= "budget_results.txt"
+    #open with write access
+    with open(budget_results, 'w') as textfile:
+            textfile.write("Financial Analysis\n")
+            textfile.write("-------------------------\n")
+            textfile.write(f"Total Months: {Months}\n")
+            textfile.write(f"Total: ${Total}\n")  
+            textfile.write(f"Average Change: ${Average}\n")
+            textfile.write(f"Greatest Increase in Profits: {month_profit}, ${greatest_profit}\n")
+            textfile.write(f"Greatest Decrease in Profits: {month_loss}, ${greatest_loss}\n")  
+
 
     print("Financial Analysis")
     print("-------------------------")
     print(f"Total Months: {Months}")
-    print(f"Total: {Total}")  
-    print(f"Average Change: {Average}")
-    print(f"Greatest Increase in Profits: {month_profit}, {greatest_profit}")
-    print(f"Greatest Decrease in Profits: {month_loss}, {greatest_loss}")    
+    print(f"Total: ${Total}")  
+    print(f"Average Change: ${Average}")
+    print(f"Greatest Increase in Profits: {month_profit}, ${greatest_profit}")
+    print(f"Greatest Decrease in Profits: {month_loss}, ${greatest_loss}")    
 
     
     
