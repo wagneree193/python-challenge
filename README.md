@@ -1,2 +1,4 @@
 # python-challenge
-python homework 1
+PyBank- used python in vscode to analyze a budget data file that contained a list of profits and losses by month. Final output needed a count of months, the net total over the entire period, and the greatest profits and losses.  Used lists and nested if statements within the for loop to find the values and then printed them to the terminal as well as writing them out to a txt file. Dynamic code allows for updates to the output as values are added to the original dataset.
+
+PyPoll- used python in vscode to analyze election results in a race between four candidates. needed to calculate total vote, votes for each candidate, percent of votes for each candidate, and the winner. used nested for loops and if statements to find the winner and utilized lists and .count function to calculate the percent of votes each candidate received.
