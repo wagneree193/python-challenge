@@ -26,9 +26,8 @@ with open(csvpath) as csvfile:
         Candidate_list.append(row[2])
         name = row[2]
         #candidate name is key and value is how many votes they got
+        #cycle through name list to count how many time the name appears and find the winner
 
-
-    
         Candidate_dict[name] = Candidate_dict[name]+1 
         for name, value in Candidate_dict.items():
             if Candidate_dict[name] > Vote_Count:
@@ -66,7 +65,7 @@ with open(csvpath) as csvfile:
     OTooley_pct = round((OT_tot/Total_Votes)*100,2)
     Correy_pct = round((Correy_tot/Total_Votes)*100,2)
 
-    #Percent_Votes= [round(100*(votes per name/Total_Votes),2)]   
+       
 
 
 print("Election Results")
@@ -74,10 +73,27 @@ print("------------------------")
 print(f"Total Votes: {Total_Votes}")
 print("------------------------")
 #print(Pct)
-print(f"Khan : {Khan_pct, [Khan_tot]}")
-print(f"Li : {Li_pct, [Li_tot]}")
-print(f"O'Tooley : {OTooley_pct, [OT_tot]}")
-print(f"Correy: {Correy_pct, [Correy_tot]}")
+print(f"Khan : {Khan_pct}% {[Khan_tot]}")
+print(f"Li : {Li_pct}% {[Li_tot]}")
+print(f"O'Tooley : {OTooley_pct}% {[OT_tot]}")
+print(f"Correy: {Correy_pct}% {[Correy_tot]}")
 print("-------------------------")
 print(f"Winner: {Winner}")
 
+#create text file for the output 
+
+election_results= "election_results.txt"
+#open with write access
+with open(election_results, 'w') as textfile:
+
+#write to file
+    textfile.write("Election Results\n")
+    textfile.write("------------------------\n")
+    textfile.write(f"Total Votes: {Total_Votes}\n")
+    textfile.write("------------------------\n")
+    textfile.write(f"Khan : {Khan_pct}% {[Khan_tot]}\n")
+    textfile.write(f"Li : {Li_pct}% {[Li_tot]}\n")
+    textfile.write(f"O'Tooley : {OTooley_pct}% {[OT_tot]}\n")
+    textfile.write(f"Correy: {Correy_pct}% {[Correy_tot]}\n")
+    textfile.write("-------------------------\n")
+    textfile.write(f"Winner: {Winner}\n")
